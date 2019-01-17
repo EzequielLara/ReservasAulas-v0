@@ -1,6 +1,6 @@
 # Tarea Reservas de Aulas
 ## Profesor: Andrés Rubio del Río
-## Alumno:
+## Alumno:Ezequiel Expósito Lara.
 
 La tarea va a consistir en modelar la gestión de reservas de aulas del IES Al-Ándalus. Después de todas las especificaciones y requerimientos anotados, en ese primer spring de la aplicación se ha decidido abarcar los siguientes:
 
