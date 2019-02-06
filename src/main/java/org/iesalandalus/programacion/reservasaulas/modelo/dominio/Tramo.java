@@ -14,7 +14,7 @@ public enum Tramo {
     MANANA("Mañana"),
     TARDE("Tarde");
     
-    private final String cadenaAMostrar;
+    private String cadenaAMostrar;
     
     
     private Tramo(String cadenaAMostrar){
