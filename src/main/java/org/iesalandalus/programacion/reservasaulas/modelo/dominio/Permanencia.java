@@ -16,27 +16,26 @@ import java.util.Objects;
 public class Permanencia {
    
     private LocalDate dia;
-    private static final DateTimeFormatter FORMATO_DIA= DateTimeFormatter.ofPattern("dd/mm/aaaa");
+    private final DateTimeFormatter FORMATO_DIA= DateTimeFormatter.ofPattern("dd/MM/uuuu");
     private Tramo tramo;
     
     
     public Permanencia(LocalDate dia, Tramo tramo){
-    
+        
         setDia(dia);
         setTramo(tramo);
-    
     }
     
     public Permanencia(Permanencia permanencia){
         
         if(permanencia==null){
         
-            throw new IllegalArgumentException("Elemento nulo, debe introducir un objeto");
+            throw new IllegalArgumentException("No se puede copiar una permanencia nula.");
                 
         }else{
-            
-            permanencia =new Permanencia(permanencia.getDia(),permanencia.getTramo());
-       
+           
+           setDia(permanencia.getDia());
+           setTramo(permanencia.getTramo());
         }
         
         
@@ -49,10 +48,12 @@ public class Permanencia {
     private void setDia(LocalDate dia) {
         if(dia==null){
         
-            throw new IllegalArgumentException("introducir dia");
+            throw new IllegalArgumentException("El día de una permanencia no puede ser nulo.");
+            
         }else{
             
-            this.dia = dia;
+            //this.dia = LocalDate.of(dia.getYear(), dia.getMonth(), dia.getDayOfMonth());
+            this.dia=dia;
         }
     }
 
@@ -64,7 +65,7 @@ public class Permanencia {
         
         if(tramo==null){
         
-            throw new IllegalArgumentException("introducir tramo");
+            throw new IllegalArgumentException("El tramo de una permanencia no puede ser nulo.");
             
         }else{
             
@@ -74,11 +75,14 @@ public class Permanencia {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + Objects.hashCode(this.dia);
-        hash = 13 * hash + Objects.hashCode(this.tramo);
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.dia);
+        
+        hash = 47 * hash + Objects.hashCode(this.tramo);
         return hash;
     }
+
+   
 
     @Override
     public boolean equals(Object obj) {
@@ -92,7 +96,10 @@ public class Permanencia {
             return false;
         }
         final Permanencia other = (Permanencia) obj;
-        if ((!Objects.equals(this.dia, other.dia))||(this.tramo != other.tramo)) {
+        if (!Objects.equals(this.dia, other.dia)) {
+            return false;
+        }
+        if (this.tramo != other.tramo) {
             return false;
         }
         return true;
@@ -100,7 +107,10 @@ public class Permanencia {
 
     @Override
     public String toString() {
-        return "Permanencia{" + "dia=" + dia + ", tramo=" + tramo + '}';
+        return "[dia=" + dia.format(FORMATO_DIA) + ", tramo=" + tramo + "]";
     }
+    
+
+    
        
 }
