@@ -13,8 +13,8 @@ import java.util.Objects;
  */
 public class Profesor {
     
-    private static final String ER_TELEFONO = "950112233";
-    private static final String ER_CORREO= "joseramon.jimenez@iesalandalus.org" ;
+    private static final String ER_TELEFONO = "950[0-9]{6}|[679][0-9] {8}";
+    private static final String ER_CORREO= "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" ;
     private String nombre;
     private String correo;
     private String telefono;
@@ -28,7 +28,9 @@ public class Profesor {
     
           setNombre(profesor.getNombre());
           setCorreo(profesor.getCorreo());
+         
           setTelefono(profesor.getTelefono());
+          
         
         }
     }
@@ -37,6 +39,7 @@ public class Profesor {
     
         setNombre(nombre);
         setCorreo(correo);
+        
     }
     
     public Profesor(String nombre, String correo, String telefono){
@@ -83,16 +86,16 @@ public class Profesor {
     
     public void setTelefono(String telefono){
         
-        if(telefono==null){
-            
-            throw new IllegalArgumentException("El teléfono del profesor no puede estar vacío.");
-        }
+        if(telefono!=null){
+        
+       //     throw new IllegalArgumentException("El teléfono del profesor no puede ser nulo.");
+        //}
         if(!telefono.matches(ER_TELEFONO)){
     
             throw new IllegalArgumentException("El teléfono del profesor no es válido.");
         }
             this.telefono=telefono;
-        
+        }
     }
     
     public String getNombre(){
@@ -106,8 +109,9 @@ public class Profesor {
     }
     
     public String getTelefono(){
-    
-        return telefono;
+   
+      
+        return telefono; 
     }
 
     @Override
