@@ -28,14 +28,14 @@ public class Reserva {
         
         if(reserva==null){
         
-        throw new IllegalArgumentException("La reserva no puede ser nula.");
+        throw new IllegalArgumentException("No se puede copiar una reserva nula.");
         
         }
-        reserva=new Reserva (reserva.getProfesor(),reserva.getAula(),reserva.getPermanencia());
-       /* 
+        //reserva=new Reserva (reserva.getProfesor(),reserva.getAula(),reserva.getPermanencia());
+       
         setPermanencia(reserva.permanencia);
         setAula(reserva.aula);
-        setProfesor(reserva.profesor);*/
+        setProfesor(reserva.profesor);
         
         
     }
@@ -47,7 +47,7 @@ public class Reserva {
     private void setPermanencia(Permanencia permanencia) {
         
        if(permanencia==null){
-           throw new IllegalArgumentException("Copiar excepcion setPermanencia.");
+           throw new IllegalArgumentException("La reserva se debe hacer para una permanencia concreta.");
        }
        
         this.permanencia = new Permanencia(permanencia.getDia(), permanencia.getTramo());
@@ -60,7 +60,7 @@ public class Reserva {
     private void setAula(Aula aula) {
         
        if(aula==null){
-           throw new IllegalArgumentException("Copiar excepcion setAula.");
+           throw new IllegalArgumentException("La reserva debe ser para un aula concreta.");
        }
         this.aula = new Aula(aula.getNombre());
     }
@@ -72,7 +72,7 @@ public class Reserva {
     private void setProfesor(Profesor profesor) {
         
         if(profesor==null){
-           throw new IllegalArgumentException("Copiar excepcion setProfesor.");
+           throw new IllegalArgumentException("La reserva debe estar a nombre de un profesor.");
        }
         this.profesor = new Profesor(profesor.getNombre(),profesor.getCorreo(),profesor.getTelefono());
     }
@@ -110,17 +110,7 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "Reserva{" + "profesor=" + profesor + ", aula=" + aula + ", permanencia=" + permanencia + '}';
+        return  "[profesor=" + profesor + ", aula=" + aula + ", permanencia=" + permanencia + "]";
     }
 
-
-
-  
-    
-    
-    
-    
-    
-    
-    
 }
