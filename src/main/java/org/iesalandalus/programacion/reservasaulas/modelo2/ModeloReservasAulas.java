@@ -34,11 +34,11 @@ public class ModeloReservasAulas {
         return aulas.getAulas();
     }
     
-    public int getNumeroAulas(){
+    public int getNumAulas(){
         return aulas.getNumAulas();
     }
     
-    public String[] representarNumeroAulas(){
+    public String[] representarAulas(){
         return aulas.representar();
     }
     
@@ -58,11 +58,11 @@ public class ModeloReservasAulas {
         return profesores.getProfesores();
     }
     
-    public int getNumeroProfesores(){
+    public int getNumProfesores(){
         return profesores.getNumProfesores();
     }
     
-    public String[] representarNumeroProfesores(){
+    public String[] representarProfesores(){
         return profesores.representar();
     }
     
@@ -70,7 +70,7 @@ public class ModeloReservasAulas {
         return profesores.buscar(profesor);
     }
     
-    public void insertaProfesor(Profesor profesor) throws OperationNotSupportedException{
+    public void insertarProfesor(Profesor profesor) throws OperationNotSupportedException{
         profesores.insertar(profesor);
     }
     
@@ -82,11 +82,11 @@ public class ModeloReservasAulas {
         return reservas.getReservas();
     }
     
-    public int getNumeroReservas(){
+    public int getNumReservas(){
         return reservas.getNumReservas();
     }
     
-    public String[] representarNumeroReservas(){
+    public String[] representarReservas(){
         return reservas.representar();
     }
     
@@ -102,7 +102,7 @@ public class ModeloReservasAulas {
         reservas.borrar(reserva);
     }
     
-    public Reserva[] getReservasAulas(Aula aula){
+    public Reserva[] getReservasAula(Aula aula){
         return reservas.getReservasAula(aula);
     }
     
