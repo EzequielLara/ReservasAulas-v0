@@ -15,27 +15,24 @@ public class Aula {
     
     private String nombre;
 
-    public Aula(String nombre) {
+    public Aula(String nombre){
         
-        setNombre(nombre);
-    }
+      setNombre(nombre);
     
+    } 
     public Aula(Aula aula){
     
-    if (aula==null){
+         if (aula==null){
+       
+         throw new IllegalArgumentException("No se puede copiar un aula nula.");   
+            }else{
         
-        throw new IllegalArgumentException("No se puede copiar un aula nula.");
-    }
-    if (aula.getNombre().equals("")){
-        
-        throw new IllegalArgumentException("No se puede copiar un aula vacia.");
-        
-    }else{
+                setNombre(aula.getNombre());
+            }
+       
+    }     
     
-        setNombre(aula.getNombre());
-        
-        }
-    }
+       
 
     public String getNombre() {
         return nombre;
@@ -44,23 +41,25 @@ public class Aula {
     private void setNombre(String nombre){
         
         if(nombre==null){
-        
-            throw new IllegalArgumentException("El nombre del aula no puede ser nulo.");
-        }
-        if(nombre.equals("")){
             
-            throw new IllegalArgumentException("El nombre del aula no puede estar vacio.");
+            throw new IllegalArgumentException("El nombre del aula no puede ser nulo.");
+            
+        }
+        
+       if(nombre.equals("")){
+            
+           throw new IllegalArgumentException("El nombre del aula no puede estar vacío.");
             
         }else{
-            
-            this.nombre = nombre;
-        }
+       
+        this.nombre=nombre;
+       }       
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.nombre);
+        hash = 53 * hash + Objects.hashCode(this.nombre);
         return hash;
     }
 
@@ -81,6 +80,11 @@ public class Aula {
         }
         return true;
     }
+
+  
+    
+
+   
 
     @Override
     public String toString() {
