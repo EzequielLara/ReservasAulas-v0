@@ -108,13 +108,13 @@ public class Profesores{
 	if (profesor == null) {
             throw new IllegalArgumentException("No se puede borrar un profesor nulo.");
             }
-            int indice = buscarIndiceProfesor(profesor);
-            if (indiceNoSuperaTamano(indice)) {
-		desplazarUnaPosicionHaciaIzquierda(indice);
-		}
-            else {
-		throw new OperationNotSupportedException("El profesor a borrar no existe.");
-            }
+        int indice = buscarIndiceProfesor(profesor);
+        if (indiceNoSuperaTamano(indice)) {
+            desplazarUnaPosicionHaciaIzquierda(indice);
+            
+        }else {
+            throw new OperationNotSupportedException("El profesor a borrar no existe.");
+        }
 	}
       
     private void desplazarUnaPosicionHaciaIzquierda(int indice) {
