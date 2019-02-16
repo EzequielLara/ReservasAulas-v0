@@ -50,10 +50,10 @@ public class Aula {
             
            throw new IllegalArgumentException("El nombre del aula no puede estar vacío.");
             
-        }else{
+        }
        
         this.nombre=nombre;
-       }       
+             
     }
 
     @Override
