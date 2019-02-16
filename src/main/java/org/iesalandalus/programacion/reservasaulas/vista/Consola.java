@@ -17,7 +17,7 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Tramo;
  */
 class Consola {
     
-    private static final DateTimeFormatter FORMATO_DIA= DateTimeFormatter.ofPattern("dd/MM/aaaa");
+    private static final DateTimeFormatter FORMATO_DIA= DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
 
     private Consola() {
@@ -26,8 +26,10 @@ class Consola {
 
     public static void mostrarMenu() {
             mostrarCabecera("Gestión de Reserva de aulas");
+            int contador=0;
             for (Opcion opcion: Opcion.values()) {
-                    System.out.println(opcion);
+                    System.out.println(contador + "."+opcion);
+                    contador++;
             }
     }
 
@@ -39,11 +41,12 @@ class Consola {
 
     public static int elegirOpcion() {
             int ordinalOpcion;
+                
             do {
                     System.out.print("\nElige una opción: ");
                     ordinalOpcion = Entrada.entero();
             } while (!Opcion.esOrdinalValido(ordinalOpcion));
-            return ordinalOpcion;
+         return ordinalOpcion;
     }
 
     public static Aula leerAula(){
@@ -65,12 +68,27 @@ class Consola {
     
     
     public static Profesor leerProfesor(){
+        String nombre=leerNombreProfesor();
+        String correo;
+        String telefono;
+        Profesor profesor = null;
+     try{
+        do{
+        System.out.println("Introduce el correo: ");
+        correo = Entrada.cadena();
+        }while(correo==null||correo.equals(""));
         
-        System.out.print("Introduce el correo: ");
-        String correo = Entrada.cadena();
-        System.out.print("Introduce el teléfono: ");
-        String telefono = Entrada.cadena();
-        Profesor profesor = new Profesor(leerNombreProfesor(),correo,telefono);
+        System.out.println("Introduce el teléfono: ");
+        telefono = Entrada.cadena();
+        if(telefono.equals("")){
+            profesor=new Profesor(nombre,correo);
+        }else{
+            profesor = new Profesor(nombre,correo,telefono);
+        }
+     }catch(IllegalArgumentException e){
+         
+         System.out.println(e.getMessage());
+     }    
         return profesor;
        
     }
@@ -91,7 +109,7 @@ class Consola {
      do{
         System.out.println("Elige tramo horario: 1.Si es por la mañana y 2.Si es por la tarde");
         numero=Entrada.entero();
-     }while(numero==1||numero==2);
+     }while(numero!=1&&numero!=2);
      
         if(numero==1){
             return Tramo.MANANA;
@@ -108,7 +126,7 @@ class Consola {
         do{
         System.out.println("Introduce una fecha con formato dd/mm/aaaa: ");
         fecha=LocalDate.parse(Entrada.cadena(), FORMATO_DIA);
-       }while(fecha!=null);
+       }while(fecha==null);
         return fecha;
     }
 }
