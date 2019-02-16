@@ -111,7 +111,7 @@ protected static void setVista(IUTextual vista){
 
 @Override
 public String toString() {
-   return "Opcion{" + "mensajeAmostrar=" + mensajeAmostrar + '}';
+   return "Opcion: " + mensajeAmostrar ;
 }
 
 public static Opcion getOpcionSegunOrdinal(int ordinal) {
