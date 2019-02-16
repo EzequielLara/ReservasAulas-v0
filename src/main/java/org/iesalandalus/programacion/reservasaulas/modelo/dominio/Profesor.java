@@ -13,8 +13,8 @@ import java.util.Objects;
  */
 public class Profesor {
     
-    private static final String ER_TELEFONO = "950[0-9]{6}|[679][0-9] {8}";
-    private static final String ER_CORREO= "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" ;
+    private static final String ER_TELEFONO = "([69]{1})([0-9]{8})";
+    private static final String ER_CORREO= "([a-zA-z0-9.-_]{1,})(\\@[a-zA-z]{1,})(\\.[a-z]{1,3})";
     private String nombre;
     private String correo;
     private String telefono;
@@ -46,10 +46,10 @@ public class Profesor {
     
         setNombre(nombre);
         setCorreo(correo);
-        if(telefono==null){
+        /*if(telefono==null){
            Profesor profesor= new Profesor(nombre,correo);
-        }else{setTelefono(telefono);}
-        
+        }else{setTelefono(telefono);}*/
+        setTelefono(telefono);
     }
    
     private void setNombre(String nombre){
@@ -151,12 +151,7 @@ public class Profesor {
         if (!Objects.equals(this.nombre, other.nombre)) {
             return false;
         }
-        if (!Objects.equals(this.correo, other.correo)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefono, other.telefono)) {
-            return false;
-        }
+     
         return true;
     }
     
